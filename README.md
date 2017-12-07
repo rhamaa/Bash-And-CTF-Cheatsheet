@@ -1,5 +1,4 @@
-# Bash-And-CTF-Cheatsheet
-Bash And CTF Cheatsheet that i found around the internet
+# Bash And CTF Cheatsheet
 
 ## Server Side Template Injection
 ```bash
@@ -7,10 +6,10 @@ Bash And CTF Cheatsheet that i found around the internet
 ```
 
 
-## BashHack
+## Bash Hack
 
 ### Bashfuck
-Executing command without usng alphanum characters
+Executing command without using alphanum characters
 
 [BasFuck](https://github.com/trichimtrich/bashfuck)
 
