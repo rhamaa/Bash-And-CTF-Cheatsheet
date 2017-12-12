@@ -13,3 +13,8 @@ Executing command without using alphanum characters
 
 [BasFuck](https://github.com/trichimtrich/bashfuck)
 
+### Socat
+
+```bash
+socat -d -d -d TCP4-LISTEN:1337,reuseaddr,fork EXEC:"python pwn.py" > /dev/null 2>&1 &
+```
