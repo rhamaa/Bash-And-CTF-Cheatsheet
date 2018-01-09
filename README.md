@@ -18,3 +18,10 @@ Executing command without using alphanum characters
 ```bash
 socat -d -d -d TCP4-LISTEN:1337,reuseaddr,fork EXEC:"python pwn.py" > /dev/null 2>&1 &
 ```
+
+### Shellcode Extractor
+
+```bash
+objdump -d ./orww|grep '[0-9a-f]:'|grep -v 'file'|cut -f2 -d:|cut -f1-6 -d' '|tr -s ' '|tr '\t' ' '|sed 's/ $//g'|sed 's/ /\\x/g'|paste -d '' -s |sed 's/^/"/'|sed 's/$/"/g'
+```
+Source : [http://www.ilmuhacking.com/exploit/belajar-membuat-shellcode-part-1/](http://www.ilmuhacking.com/exploit/belajar-membuat-shellcode-part-1/) 
